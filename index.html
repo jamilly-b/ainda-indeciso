@@ -90,7 +90,7 @@
     <h1>Ainda<br>indeciso?</h1>
     <p class="sub">Esqueça os nomes. Julgue as ideias.</p>
     <div class="text">
-      <p>Você vai ler 20 propostas e ações dos dois candidatos do 2º turno, sem saber quem disse o quê. Para cada uma, responda se acha boa ou ruim para você.</p>
+      <p>Você vai ler <span class="total">20</span> propostas e ações dos dois candidatos do 2º turno, sem saber quem disse o quê. Para cada uma, responda se acha boa ou ruim para você.</p>
       <p>No fim, você descobre com quem concorda de verdade. Cada resposta traz o link da fonte para você conferir.</p>
     </div>
   </div>
@@ -128,7 +128,7 @@
   <div class="row"><b>Flávio Bolsonaro</b><span id="nf"></span><div class="track"><i id="tf" style="background:var(--flavio)"></i></div></div>
   <span class="mono" style="margin-top:22px">As ideias em que você mais acredita</span>
   <ul class="ideas" id="ideas"></ul>
-  <p class="disc">O resultado compara só as 20 propostas deste quiz. Antes de votar, confira as fontes e o programa completo de cada candidato.</p>
+  <p class="disc">O resultado compara só as <span class="total">20</span> propostas deste quiz. Antes de votar, confira as fontes e o programa completo de cada candidato.</p>
   <div class="push stack">
     <button class="btn solid" onclick="location.reload()">↺ Refazer</button>
   </div>
@@ -202,11 +202,12 @@
      note:"Fonte com posição política declarada.",
      src:"Brasil 247 · 28/03/2026", url:"https://www.brasil247.com/brasil/flavio-bolsonaro-defende-pressao-internacional-sobre-eleicoes-brasileiras-em-evento-conservador-nos-eua/"},
     {n:20, who:"flavio", tag:"#programassociais",
-     phrase:"Votar para manter os vetos que barraram a ampliação do acesso ao BPC.",
-     idea:"Manter as regras atuais do BPC",
-     fact:"Em 2020, como senador, Flávio votou duas vezes para manter vetos que aumentariam o limite de renda para receber o BPC, benefício de idosos e pessoas com deficiência.",
-     note:"O plano de governo dele promete não tirar ajuda de quem depende do Estado.",
-     src:"ICL Notícias · 07/10/2026", url:"https://iclnoticias.com.br/flavio-bolsonaro-tesouraco-votos-bpc/"},
+     phrase:"Reajustar aposentadorias e o BPC só pela inflação e não aumentar o número de famílias com direito ao BPC.",
+     idea:"Aposentadorias e BPC corrigidos só pela inflação",
+     fact:"Em 2020, como senador, Flávio votou duas vezes para manter vetos que aumentariam o limite de renda para receber o BPC. Em 2026, segundo a Folha, sua equipe econômica estuda reajustar aposentadorias e BPC só pela inflação, num pacote de corte de R$ 250 bilhões.",
+     note:"A campanha nega o reajuste só pela inflação: diz que são “conversas informais” e que a medida não está no plano registrado.",
+     src:"ICL Notícias · 07/10/2026", url:"https://iclnoticias.com.br/flavio-bolsonaro-tesouraco-votos-bpc/",
+     src2:"Diario de Pernambuco / Folha · 10/2026", url2:"https://www.diariodepernambuco.com.br/politica/2026/10/11726164-flavio-considera-limitar-reajuste-de-aposentadorias-e-bpc.html"},
     {n:21, who:"flavio", tag:"#segurança",
      phrase:"Facilitar a posse e o porte de armas para a população.",
      idea:"Facilitar o acesso a armas",
@@ -228,29 +229,34 @@
      idea:"Cortar impostos e gastos com o “tesouraço”",
      fact:"Em dezembro de 2025, Flávio apresentou a investidores o “tesouraço”: corte de impostos, ajuste fiscal e fim de leis vistas como burocráticas.",
      src:"CNN Brasil · 17/12/2025", url:"https://www.cnnbrasil.com.br/blogs/gustavo-uribe/politica/flavio-propoe-tesouraco-em-conversa-com-mercado-financeiro/"},
-    {n:25, who:"flavio", tag:"#direitostrabalhistas",
-     phrase:"Criar regras de contratação diferentes para pessoas com 50 anos ou mais que estão desempregadas há um ano.",
-     idea:"Contratação especial para quem tem 50 anos ou mais",
-     fact:"O plano de governo prevê “condições diferenciadas” para incentivar a contratação de pessoas com 50 anos ou mais desempregadas há 12 meses, além de um contrato mais barato para jovens.",
-     note:"O plano não detalha quais regras ou direitos mudariam.",
-     src:"Jornal Via · 14/08/2026", url:"https://jornalvia.com/piracicaba/eleicoes/flavio-bolsonaro-propoe-jornada-de-trabalho-flexivel-e-negociacao-direta-entre-empresas-e-trabalhadores/"},
     {n:29, who:"flavio", tag:"#estadominimo",
      phrase:"Reduzir os ministérios de 38 para 20 a 25 e rever carreiras públicas que a Inteligência Artificial pode substituir.",
      idea:"Menos ministérios e uso de IA no serviço público",
      fact:"A coordenadora econômica da campanha, Daniella Marques, disse que um governo Flávio teria entre 20 e 25 ministérios e reavaliaria carreiras tornadas ociosas pela IA.",
      note:"A campanha diz que falas informais da equipe não são necessariamente compromissos. O plano oficial fala em cortar pelo menos 10 ministérios.",
      src:"Veja · 21/08/2026", url:"https://veja.abril.com.br/brasil/daniella-marques-sugere-substituicao-de-carreiras-pelo-uso-de-ia-e-corte-de-ate-18-ministerios/"},
-    {n:30, who:"flavio", tag:"#saúde",
-     phrase:"Colocar no Ministério da Saúde o líder de um instituto que defende mais parcerias com empresas privadas no SUS.",
-     idea:"Mais empresas privadas no SUS",
-     fact:"Flávio disse que seu ministro da Saúde seria Cláudio Lottenberg, que preside um instituto do setor privado favorável a mais parcerias e contratações de empresas no SUS.",
-     note:"Coluna de opinião, crítica ao candidato.",
-     src:"Brasil de Fato · 14/09/2026", url:"https://www.brasildefato.com.br/colunista/o-sus-no-seu-cotidiano/2026/09/14/flavio-bolsonaro-quer-entregar-o-sus-aos-empresarios/"},
     {n:31, who:"flavio", tag:"#economia",
      phrase:"Deixar empresa e trabalhador negociarem direto as condições de trabalho, valendo mais que a lei.",
      idea:"Negociação direta entre patrão e empregado",
      fact:"O plano de governo amplia a negociação direta e aplica o “negociado sobre o legislado”, mas dentro dos limites da legislação trabalhista, sem acabar com a escala 6x1.",
-     src:"Jornal Via · 14/08/2026", url:"https://jornalvia.com/piracicaba/eleicoes/flavio-bolsonaro-propoe-jornada-de-trabalho-flexivel-e-negociacao-direta-entre-empresas-e-trabalhadores/"}
+     src:"Jornal Via · 14/08/2026", url:"https://jornalvia.com/piracicaba/eleicoes/flavio-bolsonaro-propoe-jornada-de-trabalho-flexivel-e-negociacao-direta-entre-empresas-e-trabalhadores/"},
+    // cartas novas, fora do baralho original
+    {n:"N3", who:"flavio", tag:"#economia",
+     phrase:"Avaliar a privatização de estatais como o Banco do Brasil e a venda de partes da Petrobras.",
+     idea:"Privatizar estatais como o Banco do Brasil",
+     fact:"Em setembro, a coordenadora econômica da campanha, Daniella Marques, levantou a possibilidade de privatizar o BB. O coordenador da campanha, Rogério Marinho, disse que a Petrobras poderia vender refinarias e campos de petróleo.",
+     src:"Investidor10 · 09/10/2026", url:"https://investidor10.com.br/noticias/banco-do-brasil-e-petrobras-nao-serao-privatizados-diz-campanha-de-flavio-123157/"},
+    {n:"N4", who:"flavio", tag:"#democracia",
+     phrase:"Defender o impeachment de ministros do STF e indicar novos ministros para o lugar deles.",
+     idea:"Impeachment de ministros do STF",
+     fact:"Em agosto de 2026, Flávio defendeu o impeachment de Alexandre de Moraes, Flávio Dino e Cristiano Zanin e disse que, se eleito, poderá indicar novos ministros ao STF.",
+     src:"Jornal de Brasília · 08/2026", url:"https://jornaldebrasilia.com.br/noticias/politica-e-poder/flavio-cita-moraes-dino-e-zanin-ao-defender-impeachment-no-stf-e-admite-novela-sobre-vice/"},
+    {n:"N5", who:"flavio", tag:"#meioambiente",
+     phrase:"Permitir que particulares comprem terrenos à beira-mar que hoje pertencem à União.",
+     idea:"Venda de terrenos de marinha no litoral",
+     fact:"Em 2024, Flávio foi relator no Senado da PEC 3/2022, que acaba com a propriedade exclusiva da União sobre os terrenos de marinha.",
+     note:"Depois da polêmica, ele incluiu no texto que as praias continuam públicas e de livre acesso.",
+     src:"SBT News · 10/06/2024", url:"https://sbtnews.sbt.com.br/noticia/politica/pec-das-praias-apos-polemica-flavio-bolsonaro-decide-mudar-texto-confira-como-ficara"}
   ];
   // significado em linguagem simples, mostrado antes da resposta (não pode entregar o autor)
   const MEANING={
@@ -265,15 +271,16 @@
     14:"São centros que reúnem polícia, Justiça, apoio psicológico e abrigo para mulheres que sofrem violência.",
     17:"Defende endurecer o combate ao crime, com o governo federal atuando junto com os estados na segurança.",
     18:"Terras raras são minerais usados em celulares, carros elétricos e eletrônicos. O Brasil tem grandes reservas, e os EUA buscam alternativas à China.",
-    20:"O BPC paga um salário mínimo por mês a idosos e pessoas com deficiência de baixa renda. A mudança vetada deixaria mais famílias receberem.",
+    20:"O BPC paga um salário mínimo por mês a idosos e pessoas com deficiência de baixa renda. Hoje ele e as aposentadorias sobem junto com o mínimo, acima da inflação. Pela ideia, só reporiam a alta dos preços, e o limite de renda para receber o BPC não aumentaria.",
     21:"Posse é ter arma em casa. Porte é poder andar armado na rua. A ideia é facilitar as duas coisas.",
     22:"As empresas pagariam menos encargos para contratar jovens, e o pagamento seria calculado pelas horas trabalhadas, não por um salário fixo no mês.",
     23:"Em vez de garantir 2 folgas por semana a todos, cada trabalhador combinaria as horas com a empresa, e o salário mudaria conforme as horas.",
     24:"O governo arrecadaria e gastaria menos: cobraria menos impostos e cortaria despesas para equilibrar as contas.",
-    25:"As empresas teriam regras próprias para contratar quem tem 50 anos ou mais e está sem emprego há um ano, como forma de incentivo.",
     29:"Hoje há 38 ministérios. A ideia é juntar ou extinguir parte deles e cortar funções que a tecnologia já consegue fazer.",
-    30:"Na prática, empresas passariam a administrar ou prestar mais serviços do SUS, pagas pelo governo.",
-    31:"Hoje a lei trabalhista define regras mínimas. Pela ideia, acordos entre patrão e empregado poderiam valer mais que algumas delas, dentro dos limites da lei."
+    31:"Hoje a lei trabalhista define regras mínimas. Pela ideia, acordos entre patrão e empregado poderiam valer mais que algumas delas, dentro dos limites da lei.",
+    N3:"Privatizar é vender uma empresa do governo para a iniciativa privada.",
+    N4:"Impeachment é tirar o ministro do cargo. Para isso, o Senado precisa aprovar com 54 dos 81 votos.",
+    N5:"Os terrenos de marinha são faixas do litoral que pertencem ao governo federal. Pela proposta, poderiam passar para estados, municípios e donos particulares."
   };
   // elogios com fonte às propostas do Lula, mostrados só na revelação
   const PRO={
@@ -302,8 +309,8 @@
   const CRIT={
     18:{text:"O Brasil 247 descreveu a fala como oferecer “de bandeja” aos EUA as terras raras brasileiras, um recurso considerado estratégico.",
         src:"Brasil 247 · 28/03/2026", url:"https://www.brasil247.com/brasil/flavio-bolsonaro-defende-pressao-internacional-sobre-eleicoes-brasileiras-em-evento-conservador-nos-eua/"},
-    20:{text:"Com os vetos mantidos, o limite de renda do BPC não foi ampliado, e famílias pobres que seriam incluídas no benefício ficaram de fora.",
-        src:"ICL Notícias · 07/10/2026", url:"https://iclnoticias.com.br/flavio-bolsonaro-tesouraco-votos-bpc/"},
+    20:{text:"A CUT diz que reajustar só pela inflação empobreceria cerca de 28 milhões de aposentados e pensionistas do INSS. Com os vetos mantidos em 2020, famílias pobres que seriam incluídas no BPC ficaram de fora.",
+        src:"CUT", url:"https://www.cut.org.br/noticias/flavio-bolsonaro-quer-baixar-o-valor-das-aposentadorias-pensoes-e-do-bpc-5741/"},
     21:{text:"Para Daniel Cerqueira, pesquisador do Ipea, facilitar o acesso a armas a partir de 2019 “resultou em muitas mortes violentas”. Em 2022, 72% dos homicídios no país foram com arma de fogo.",
         src:"Correio Braziliense · 04/03/2025", url:"https://www.correiobraziliense.com.br/brasil/2025/03/7075811-homicidios-a-vida-banalizada-pela-arma-de-fogo.html"},
     22:{text:"Para o advogado trabalhista que assina o texto, a proposta acaba com o salário mensal como referência e abre caminho para contratos de “zero hora” e para a precarização.",
@@ -312,14 +319,16 @@
         src:"Intercept Brasil · 07/10/2026", url:"https://www.intercept.com.br/2026/10/07/flavio-bolsonaro-enterrar-fim-escala-6x1-regra-abre-brecha-reduzir-salarios/"},
     24:{text:"Segundo o ICL Notícias, o plano prevê um ajuste de R$ 200 bilhões sem detalhar de onde sairiam todos os cortes.",
         src:"ICL Notícias · 07/10/2026", url:"https://iclnoticias.com.br/flavio-bolsonaro-tesouraco-votos-bpc/"},
-    25:{text:"O Intercept afirma que o plano prevê um modelo de contratação com menos direitos para jovens e para pessoas com mais de 50 anos.",
-        src:"Intercept Brasil · 07/10/2026", url:"https://www.intercept.com.br/2026/10/07/flavio-bolsonaro-enterrar-fim-escala-6x1-regra-abre-brecha-reduzir-salarios/"},
     29:{text:"O plano não diz quais carreiras seriam cortadas nem traz calendário de concursos ou número de vagas para servidores.",
         src:"ISTOÉ · 12/10/2026", url:"https://istoe.com.br/lula-flavio-bolsonaro-concursos-publicos-servidores"},
-    30:{text:"O colunista avalia que a escolha de Lottenberg indica um “programa de mercado contra o SUS”, que priorizaria os ganhos do setor privado.",
-        src:"Brasil de Fato · 14/09/2026", url:"https://www.brasildefato.com.br/colunista/o-sus-no-seu-cotidiano/2026/09/14/flavio-bolsonaro-quer-entregar-o-sus-aos-empresarios/"},
     31:{text:"Advogados ouvidos pelo Intercept dizem que não existe negociação “de igual para igual” entre a empresa e alguém que depende do emprego.",
-        src:"Intercept Brasil · 07/10/2026", url:"https://www.intercept.com.br/2026/10/07/flavio-bolsonaro-enterrar-fim-escala-6x1-regra-abre-brecha-reduzir-salarios/"}
+        src:"Intercept Brasil · 07/10/2026", url:"https://www.intercept.com.br/2026/10/07/flavio-bolsonaro-enterrar-fim-escala-6x1-regra-abre-brecha-reduzir-salarios/"},
+    N3:{text:"Integrantes da própria equipe deram versões opostas. Em 8 de outubro, Adolfo Sachsida disse sobre BB, Caixa e Petrobras: “Nenhuma dessas empresas será tocada”.",
+        src:"Investidor10 · 09/10/2026", url:"https://investidor10.com.br/noticias/banco-do-brasil-e-petrobras-nao-serao-privatizados-diz-campanha-de-flavio-123157/"},
+    N4:{text:"Moraes rebateu as acusações de Flávio sobre o julgamento de Jair Bolsonaro: disse que há “fartas provas” da Polícia Federal e que todos os atos foram públicos e gravados.",
+        src:"Itatiaia · 01/08/2025", url:"https://www.itatiaia.com.br/politica/flavio-bolsonaro-acusa-alexandre-de-moraes-de-discurso-de-odio-e-parcialidade-em-julgamento-da-trama-golpista/"},
+    N5:{text:"A proposta foi criticada por poder restringir o acesso da população às praias e ficou conhecida como “PEC da privatização das praias”.",
+        src:"SBT News · 10/06/2024", url:"https://sbtnews.sbt.com.br/noticia/politica/pec-das-praias-apos-polemica-flavio-bolsonaro-decide-mudar-texto-confira-como-ficara"}
   };
   const NAME={lula:"Lula",flavio:"Flávio Bolsonaro"};
   const $=id=>document.getElementById(id);
@@ -327,6 +336,8 @@
     <p class="big">Bom ou ruim? Decida.</p>
     <p>Leia a frase com calma. Não pense em quem disse. Pense só no que ela muda na sua vida.</p>
     <p style="margin-top:6px">A resposta aparece aqui depois que você responder.</p>`;
+
+  document.querySelectorAll('.total').forEach(s=>s.textContent=Q.length);
 
   // embaralha a ordem a cada partida
   for(let k=Q.length-1;k>0;k--){const j=Math.floor(Math.random()*(k+1));[Q[k],Q[j]]=[Q[j],Q[k]]}
@@ -363,6 +374,7 @@
       <p>${q.fact}</p>
       ${q.note?`<p class="note">${q.note}</p>`:''}
       <a class="src" href="${q.url}" target="_blank" rel="noopener">Ver fonte: ${q.src} ↗</a>
+      ${q.url2?`<br><a class="src" href="${q.url2}" target="_blank" rel="noopener">Ver fonte: ${q.src2} ↗</a>`:''}
       ${extra(PRO[q.n],'O que dizem os críticos','Ver fonte')}
       ${extra(CRIT[q.n],'O que dizem os críticos','Ver crítica')}`;
     $('answers').hidden=true; $('next').hidden=false;
@@ -371,14 +383,17 @@
 
   function result(){
     const good=w=>answers.filter(a=>a.q.who===w&&a.v==='bom').length;
-    const L=good('lula'), F=good('flavio'), T=Q.length/2;
+    const tot=w=>Q.filter(q=>q.who===w).length;
+    const L=good('lula'), F=good('flavio'), LT=tot('lula'), FT=tot('flavio');
+    // compara a proporção, porque cada candidato pode ter um número diferente de cartas
+    const pl=L/LT, pf=F/FT;
     const w=$('winner');
-    if(L>F){w.textContent='Lula';w.className='lula'}
-    else if(F>L){w.textContent='Flávio Bolsonaro';w.className='flavio'}
+    if(pl>pf){w.textContent='Lula';w.className='lula'}
+    else if(pf>pl){w.textContent='Flávio Bolsonaro';w.className='flavio'}
     else {w.textContent='Empate';w.className='';$('wlabel').textContent='Suas respostas deram'}
-    $('lead').textContent='Sem saber quem disse, você achou boas '+L+' de '+T+' ideias do Lula e '+F+' de '+T+' ideias do Flávio Bolsonaro.';
-    $('nl').textContent=L+'/'+T; $('nf').textContent=F+'/'+T;
-    $('tl').style.width=L/T*100+'%'; $('tf').style.width=F/T*100+'%';
+    $('lead').textContent='Sem saber quem disse, você achou boas '+L+' de '+LT+' ideias do Lula e '+F+' de '+FT+' ideias do Flávio Bolsonaro.';
+    $('nl').textContent=L+'/'+LT; $('nf').textContent=F+'/'+FT;
+    $('tl').style.width=pl*100+'%'; $('tf').style.width=pf*100+'%';
     const liked=answers.filter(a=>a.v==='bom');
     $('ideas').innerHTML=liked.length?liked.map(a=>`<li class="${a.q.who}">${a.q.idea}</li>`).join(''):'<li>Você não marcou nenhuma ideia como boa.</li>';
     go('s-result');
