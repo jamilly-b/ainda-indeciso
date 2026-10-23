@@ -363,7 +363,7 @@
       <p>${q.fact}</p>
       ${q.note?`<p class="note">${q.note}</p>`:''}
       <a class="src" href="${q.url}" target="_blank" rel="noopener">Ver fonte: ${q.src} ↗</a>
-      ${extra(PRO[q.n],'O que dizem a favor','Ver fonte')}
+      ${extra(PRO[q.n],'O que dizem os críticos','Ver fonte')}
       ${extra(CRIT[q.n],'O que dizem os críticos','Ver crítica')}`;
     $('answers').hidden=true; $('next').hidden=false;
     $('next').textContent=i===Q.length-1?'Ver meu resultado →':'Próxima →';
