@@ -275,7 +275,30 @@
     30:"Na prática, empresas passariam a administrar ou prestar mais serviços do SUS, pagas pelo governo.",
     31:"Hoje a lei trabalhista define regras mínimas. Pela ideia, acordos entre patrão e empregado poderiam valer mais que algumas delas, dentro dos limites da lei."
   };
-  // críticas com fonte, mostradas só na revelação
+  // elogios com fonte às propostas do Lula, mostrados só na revelação
+  const PRO={
+    1:{text:"Em maio de 2023, a Petrobras deixou de seguir o preço internacional e anunciou no mesmo dia uma redução de R$ 0,40 por litro na gasolina (−12,6%).",
+       src:"Baguete · 16/05/2023", url:"https://www.baguete.com.br/noticias/petrobras-anuncia-fim-da-paridade"},
+    3:{text:"Pesquisadoras da Unicamp estimam que a redução da jornada pode criar 3,6 milhões de vagas. Para o Ipea, as empresas podem contratar mais gente para manter a produção.",
+       src:"InfoMoney", url:"https://www.infomoney.com.br/economia/fim-escala-6x1-produtividade-empregos"},
+    7:{text:"Em 14 anos de Lei de Cotas, mais de 790 mil cotistas entraram em universidades pelo Sisu, segundo o MEC.",
+       src:"Ministério da Educação (gov.br)", url:"https://www.gov.br/mec/pt-br/lei-de-cotas"},
+    8:{text:"Com a cobrança mínima de até 10% para quem ganha mais de R$ 50 mil por mês, a isenção do IR para quem ganha até R$ 5 mil deve beneficiar cerca de 15 milhões de pessoas. “É dinheiro no bolso, literalmente”, diz o economista Pedro Faria.",
+       src:"Brasil de Fato · 06/11/2025", url:"https://brasildefato.com.br/2025/11/06/isencao-do-ir-deve-colocar-ate-r-300-a-mais-por-mes-no-bolso-de-trabalhadores-a-partir-de-2026/"},
+    10:{text:"Estudo do Insper com os institutos Sonho Grande e Natura estima que o Pé-de-Meia reduz o abandono escolar entre jovens vulneráveis de 26,4% para 19,9%.",
+       src:"Jornal de Brasília · 27/03/2026", url:"https://jornaldebrasilia.com.br/noticias/brasil/programa-pe-de-meia-reduz-evasao-escolar-entre-jovens-vulneraveis/"},
+    11:{text:"O Dieese estimou que o reajuste de 2025 colocaria R$ 81,5 bilhões a mais na renda da população e diz que a valorização “ajuda a reduzir desigualdades salariais entre homens e mulheres”.",
+       src:"O Povo · 03/01/2025", url:"https://www.opovo.com.br/noticias/economia/2025/01/03/impacto-do-novo-salario-minimo-na-economia-sera-de-rs-1254-bilhoes-estima-dieese.html"},
+    12:{text:"A relatora no Senado, Professora Dorinha (União-TO), mostrou que em 2022 só 20,7% das crianças de 0 a 3 anos do campo tinham vaga em creche, contra 40,3% na cidade.",
+       src:"Agência Senado · 01/04/2026", url:"https://www12.senado.leg.br/noticias/materias/2026/04/01/nova-lei-expande-oferta-de-creches-e-pre-escolas-em-zonas-rurais"},
+    13:{text:"Pesquisadores da UnB, que revisaram mais de 570 estudos, apontam economia de R$ 30 milhões em internações evitáveis em 10 anos e queda da mortalidade infantil onde ela era alta.",
+       src:"Brasil de Fato · 05/01/2024", url:"https://www.brasildefato.com.br/2024/01/05/mais-medicos-resulta-em-economia-de-r-30-milhoes-em-internacoes-no-sus"},
+    14:{text:"A Casa reúne no mesmo lugar delegacia, Justiça, Defensoria, Ministério Público, apoio psicológico, saúde e abrigo por até 24 horas. Hoje há 13 unidades funcionando no país.",
+       src:"Agência Gov · 18/08/2026", url:"https://agenciagov.ebc.com.br/noticias/202608/casa-da-mulher-brasileira-como-funciona-o-atendimento-e-onde-encontrar-uma-unidade"},
+    17:{text:"Para o advogado Vinícius Lapetina, integrar União, estados e municípios “potencializa a eficiência das investigações e operações” contra o crime organizado.",
+       src:"Exame · 23/10/2025", url:"https://exame.com/esferabrasil/pec-da-seguranca-publica-especialistas-divergem-sobre-eficacia-da-proposta/"}
+  };
+  // críticas com fonte às propostas do Flávio, mostradas só na revelação
   const CRIT={
     18:{text:"O Brasil 247 descreveu a fala como oferecer “de bandeja” aos EUA as terras raras brasileiras, um recurso considerado estratégico.",
         src:"Brasil 247 · 28/03/2026", url:"https://www.brasil247.com/brasil/flavio-bolsonaro-defende-pressao-internacional-sobre-eleicoes-brasileiras-em-evento-conservador-nos-eua/"},
@@ -323,6 +346,12 @@
     $('answers').hidden=false; $('next').hidden=true;
   }
 
+  function extra(e,label,link){
+    return e?`<div class="crit"><span class="mono">${label}</span>
+      <p>${e.text}</p>
+      <a class="src" href="${e.url}" target="_blank" rel="noopener">${link}: ${e.src} ↗</a></div>`:'';
+  }
+
   function answer(v,btn){
     const q=Q[i]; answers.push({q,v});
     document.querySelectorAll('#answers .btn').forEach(b=>b.disabled=true);
@@ -334,9 +363,8 @@
       <p>${q.fact}</p>
       ${q.note?`<p class="note">${q.note}</p>`:''}
       <a class="src" href="${q.url}" target="_blank" rel="noopener">Ver fonte: ${q.src} ↗</a>
-      ${CRIT[q.n]?`<div class="crit"><span class="mono">O que dizem os críticos</span>
-        <p>${CRIT[q.n].text}</p>
-        <a class="src" href="${CRIT[q.n].url}" target="_blank" rel="noopener">Ver crítica: ${CRIT[q.n].src} ↗</a></div>`:''}`;
+      ${extra(PRO[q.n],'O que dizem a favor','Ver fonte')}
+      ${extra(CRIT[q.n],'O que dizem os críticos','Ver crítica')}`;
     $('answers').hidden=true; $('next').hidden=false;
     $('next').textContent=i===Q.length-1?'Ver meu resultado →':'Próxima →';
   }
