@@ -1,0 +1,333 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Ainda Indeciso?</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=IBM+Plex+Mono:wght@400;500&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#000; --paper:#fff; --muted:#666; --soft:#ededed;
+    --lula:#c8102e; --lula-soft:#fbe9ec;
+    --flavio:#1f4fd8; --flavio-soft:#e8eefc;
+    --head:"Anton","Arial Narrow",Impact,sans-serif;
+    --mono:"IBM Plex Mono",ui-monospace,monospace;
+    --body:"Inter",Arial,sans-serif;
+  }
+  *{box-sizing:border-box}
+  html,body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--body)}
+  .mono{font-family:var(--mono);font-size:11px;letter-spacing:.12em;text-transform:uppercase}
+  [hidden]{display:none!important}
+
+  .screen{max-width:480px;margin:0 auto;min-height:100svh;padding:28px 20px calc(24px + env(safe-area-inset-bottom));display:flex;flex-direction:column}
+
+  h1{font-family:var(--head);font-weight:400;font-size:clamp(64px,19vw,92px);line-height:.9;margin:0;text-transform:uppercase}
+  .sub{font-weight:600;font-size:18px;margin:18px 0 0}
+  .text p{font-size:16px;line-height:1.6;margin:16px 0 0;color:#222}
+
+  .btn{font-family:var(--mono);font-size:13px;letter-spacing:.12em;text-transform:uppercase;border:1.5px solid var(--ink);background:var(--paper);color:var(--ink);min-height:56px;width:100%;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:10px;text-decoration:none}
+  .btn.solid{background:var(--ink);color:var(--paper)}
+  .push{margin-top:auto;padding-top:28px}
+
+  /* pergunta */
+  .top{display:flex;justify-content:space-between;align-items:center}
+  .bar{height:3px;background:var(--soft);margin:12px 0 0}
+  .bar i{display:block;height:100%;background:var(--ink);transition:width .4s ease}
+  .middle{flex:1;display:flex;flex-direction:column;justify-content:center;text-align:center;padding:28px 0 8px}
+  .phrase{font-family:var(--head);font-weight:400;font-size:clamp(30px,8.6vw,40px);line-height:1.08;margin:0;text-transform:uppercase}
+  .meaning{font-size:13.5px;line-height:1.5;color:#777;margin:12px auto 0;max-width:340px}
+  .tag{color:var(--muted);margin-bottom:12px}
+
+  .box{margin-top:26px;border:1.5px dashed var(--ink);padding:20px;transition:background .3s,border-color .3s}
+  .box p{margin:0 0 8px;font-size:15px;line-height:1.55;color:#222}
+  .box.wait{border:1px dashed #bbb;padding:14px 16px;color:var(--muted)}
+  .box.wait p{font-size:13.5px;line-height:1.5;color:var(--muted);margin:0}
+  .box.wait .big{font-size:15px;font-weight:600;color:var(--ink);margin:6px 0 4px}
+  .box.wait .mono{font-size:9.5px}
+
+  .box.on{border-style:solid;text-align:left;animation:in .35s ease both}
+  .box.on.lula{border-color:var(--lula);background:var(--lula-soft)}
+  .box.on.flavio{border-color:var(--flavio);background:var(--flavio-soft)}
+  .box.lula .who{color:var(--lula)}
+  .box.flavio .who{color:var(--flavio)}
+  .box .who{font-family:var(--head);font-weight:400;font-size:42px;line-height:.95;margin:8px 0 12px;text-transform:uppercase}
+  .src{display:inline-flex;gap:6px;margin-top:8px;color:var(--ink);font-weight:600;font-size:14px}
+  .note{font-size:13px!important;color:var(--muted)!important;margin-top:10px!important}
+  @keyframes in{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
+
+  .answers{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+  .answers .btn:disabled{opacity:.3;cursor:default}
+  .answers .btn.picked{opacity:1;background:var(--ink);color:var(--paper)}
+
+  /* resultado */
+  .result h2{font-family:var(--head);font-weight:400;font-size:clamp(58px,17vw,84px);line-height:.9;margin:14px 0 0;text-transform:uppercase}
+  .result h2.lula{color:var(--lula)}
+  .result h2.flavio{color:var(--flavio)}
+  .result .lead{font-size:16px;line-height:1.55;margin:18px 0 26px}
+  .row{display:grid;grid-template-columns:1fr auto;gap:8px;margin-bottom:16px}
+  .row b{font-weight:600;font-size:15px}
+  .row span{font-family:var(--mono);font-size:13px}
+  .track{grid-column:1/-1;height:10px;background:var(--soft)}
+  .track i{display:block;height:100%}
+  .ideas{margin:14px 0 0;padding:0;list-style:none;border-top:1px solid var(--ink)}
+  .ideas li{padding:12px 0;border-bottom:1px solid var(--soft);font-size:15px;line-height:1.4;display:flex;gap:10px}
+  .ideas li::before{content:"✓";font-weight:600}
+  .ideas li.lula::before{color:var(--lula)}
+  .ideas li.flavio::before{color:var(--flavio)}
+  .disc{font-size:12.5px;line-height:1.55;color:var(--muted);margin:18px 0 0}
+  .stack{display:grid;gap:10px}
+</style>
+</head>
+<body>
+
+<!-- Tela 1 -->
+<section class="screen" id="s-intro">
+  <div class="middle">
+    <h1>Ainda<br>indeciso?</h1>
+    <p class="sub">Esqueça os nomes. Julgue as ideias.</p>
+    <div class="text">
+      <p>Você vai ler 20 propostas e ações dos dois candidatos do 2º turno, sem saber quem disse o quê. Para cada uma, responda se acha boa ou ruim para você.</p>
+      <p>No fim, você descobre com quem concorda de verdade. Cada resposta traz o link da fonte para você conferir.</p>
+    </div>
+  </div>
+  <div class="push" style="padding-top:16px"><button class="btn solid" id="start">Começar →</button></div>
+</section>
+
+<!-- Tela 2 -->
+<section class="screen" id="s-quiz" hidden>
+  <div class="top mono"><span id="pos">Pergunta 1/20</span><span>Ainda indeciso?</span></div>
+  <div class="bar"><i id="bar"></i></div>
+
+  <div class="middle">
+    <div class="tag mono" id="tag"></div>
+    <p class="phrase" id="phrase"></p>
+    <p class="meaning" id="meaning"></p>
+    <div class="box" id="box"></div>
+  </div>
+
+  <div class="push" style="padding-top:16px">
+    <div class="answers" id="answers">
+      <button class="btn" data-v="bom">👍 É bom</button>
+      <button class="btn" data-v="ruim">👎 É ruim</button>
+    </div>
+    <button class="btn solid" id="next" hidden>Próxima →</button>
+  </div>
+</section>
+
+<!-- Tela 3 -->
+<section class="screen result" id="s-result" hidden>
+  <span class="mono">Seu resultado</span>
+  <span class="mono" style="color:var(--muted);margin-top:22px" id="wlabel">Pelas suas respostas, você deveria votar em</span>
+  <h2 id="winner"></h2>
+  <p class="lead" id="lead"></p>
+  <div class="row"><b>Lula</b><span id="nl"></span><div class="track"><i id="tl" style="background:var(--lula)"></i></div></div>
+  <div class="row"><b>Flávio Bolsonaro</b><span id="nf"></span><div class="track"><i id="tf" style="background:var(--flavio)"></i></div></div>
+  <span class="mono" style="margin-top:22px">As ideias em que você mais acredita</span>
+  <ul class="ideas" id="ideas"></ul>
+  <p class="disc">O resultado compara só as 20 propostas deste quiz. Antes de votar, confira as fontes e o programa completo de cada candidato.</p>
+  <div class="push stack">
+    <button class="btn solid" onclick="location.reload()">↺ Refazer</button>
+  </div>
+</section>
+
+<script>
+  // n = número da carta no baralho original
+  const Q=[
+    // ---------- Lula ----------
+    {n:1, who:"lula", tag:"#economia",
+     phrase:"Deixar de atrelar o preço da gasolina ao dólar e aumentar o refino de petróleo no Brasil.",
+     idea:"Preço da gasolina sem seguir o dólar",
+     fact:"Em 2022, ainda pré-candidato, Lula disse que vai “abrasileirar” o preço da gasolina, já que os investimentos são feitos em reais, e defendeu construir mais refinarias.",
+     src:"g1 · 17/02/2022", url:"https://g1.globo.com/politica/eleicoes/2022/noticia/2022/02/17/em-meio-a-alta-dos-combustiveis-lula-defende-abrasileirar-o-preco-da-gasolina.ghtml"},
+    {n:3, who:"lula", tag:"#direitostrabalhistas",
+     phrase:"Reduzir a jornada para 40 horas semanais, com duas folgas por semana e sem corte de salário.",
+     idea:"Fim da escala 6x1, sem corte de salário",
+     fact:"Na Câmara, o ministro do Trabalho, Luiz Marinho, defendeu em nome do governo o fim da escala 6x1 e disse que a mudança é viável para a economia.",
+     note:"Fonte publicada pelo próprio PT.",
+     src:"PT · 06/05/2026", url:"https://pt.org.br/governo-lula-defende-reducao-imediata-da-jornada-de-trabalho-diz-ministro/"},
+    {n:7, who:"lula", tag:"#educação",
+     phrase:"Manter e ampliar as cotas para negros, indígenas e quilombolas nas universidades.",
+     idea:"Manter e ampliar as cotas",
+     fact:"Em 2023, a Lei de Cotas foi atualizada: passou a incluir quilombolas, chegou à pós-graduação e reduziu o limite de renda para 1 salário mínimo por pessoa.",
+     src:"Ministério da Educação (gov.br)", url:"https://www.gov.br/mec/pt-br/lei-de-cotas"},
+    {n:8, who:"lula", tag:"#reformatributária",
+     phrase:"Cobrar um pouco mais de imposto dos super-ricos para não cortar dinheiro da saúde e da educação.",
+     idea:"Mais imposto para os super-ricos",
+     fact:"Em entrevista em julho de 2025, Lula defendeu que os mais ricos paguem “um pouco” mais para evitar cortes em saúde e educação.",
+     note:"Fonte com posição política declarada.",
+     src:"Brasil 247 · 02/07/2025", url:"https://www.brasil247.com/brasil/ajuste-tributario-visa-cobrar-um-pouco-dos-super-ricos-para-nao-cortar-dinheiro-da-educacao-ou-da-saude-diz-lula/"},
+    {n:10, who:"lula", tag:"#programassociais",
+     phrase:"Manter e ampliar os programas de transferência de renda, como o Pé-de-Meia.",
+     idea:"Manter e ampliar os programas sociais",
+     fact:"O plano de governo promete “manter, aperfeiçoar e ampliar” a proteção social e aprimorar o Pé-de-Meia, que apoia estudantes do ensino médio.",
+     src:"SBT News · 02/09/2026", url:"https://sbtnews.sbt.com.br/noticia/eleicoes/pobreza-e-desigualdade-veja-propostas-de-lula-na-integra"},
+    {n:11, who:"lula", tag:"#direitostrabalhistas",
+     phrase:"Manter a regra que reajusta o salário mínimo todo ano acima da inflação.",
+     idea:"Salário mínimo com aumento real",
+     fact:"A regra atual soma a inflação ao crescimento da economia. Com ela, o governo projeta um salário mínimo de R$ 1.741 em 2027.",
+     src:"Terra · 15/08/2026", url:"https://www.terra.com.br/noticias/salario-minimo-de-2027-pode-chegar-a-r-1741-veja-o-que-muda,a28ef1aae28f8a3b8e99c5828771a7d1khajonw2.html"},
+    {n:12, who:"lula", tag:"#programassociais",
+     phrase:"Obrigar as prefeituras a oferecer vagas em creches e pré-escolas também na zona rural.",
+     idea:"Creches também na zona rural",
+     fact:"Lula sancionou em 2026 a lei que obriga os municípios a oferecer vagas na educação infantil de forma proporcional à população urbana e rural.",
+     note:"A lei foi proposta no Congresso; Lula a sancionou.",
+     src:"Agência Senado · 01/04/2026", url:"https://www12.senado.leg.br/noticias/materias/2026/04/01/nova-lei-expande-oferta-de-creches-e-pre-escolas-em-zonas-rurais"},
+    {n:13, who:"lula", tag:"#saúde",
+     phrase:"Fortalecer o SUS: reduzir filas e ampliar o Mais Médicos e o Farmácia Popular.",
+     idea:"Fortalecer o SUS",
+     fact:"O plano de governo Lula-Alckmin prevê ampliar a atenção básica, reduzir filas e expandir o Mais Médicos, o Farmácia Popular e o Brasil Sorridente.",
+     note:"Fonte publicada pelo próprio PT.",
+     src:"PT · 18/08/2026", url:"https://pt.org.br/conheca-propostas-de-lula-alckmin-para-a-saude-em-defesa-da-ciencia-e-da-vida/"},
+    {n:14, who:"lula", tag:"#defesadamulher",
+     phrase:"Abrir mais Casas da Mulher Brasileira, que reúnem acolhimento e denúncia para vítimas de violência.",
+     idea:"Mais Casas da Mulher Brasileira",
+     fact:"O governo anunciou novas unidades da Casa da Mulher Brasileira, que reúne num só lugar o acolhimento e a denúncia para mulheres em situação de violência.",
+     note:"Fonte publicada pelo próprio PT, com dados do governo.",
+     src:"PT · 07/06/2023", url:"https://pt.org.br/governo-lula-fortalece-servicos-especializados-no-atendimento-as-mulheres-em-situacao-de-violencia/"},
+    {n:17, who:"lula", tag:"#segurança",
+     phrase:"Para o povo trabalhador, proteção. Para o bandido, prisão.",
+     idea:"Segurança pública comandada também pelo governo federal",
+     fact:"Em 7/10/2026, Lula disse que essa frase é o lema da campanha e defendeu a PEC da Segurança, que cria o Ministério da Segurança Pública.",
+     src:"g1 · 07/10/2026", url:"https://g1.globo.com/politica/eleicoes/2026/noticia/2026/10/07/lula-defende-pec-da-seguranca-e-diz-que-lema-da-campanha-e-para-o-povo-trabalhador-protecao-para-o-bandido-prisao.ghtml"},
+
+    // ---------- Flávio Bolsonaro ----------
+    {n:18, who:"flavio", tag:"#economia",
+     phrase:"Oferecer aos Estados Unidos uma parceria para explorar as terras raras do Brasil.",
+     idea:"Terras raras em parceria com os EUA",
+     fact:"Num evento conservador no Texas, em março de 2026, Flávio defendeu se aproximar dos EUA na exploração de terras raras, para reduzir a dependência americana da China.",
+     note:"Fonte com posição política declarada.",
+     src:"Brasil 247 · 28/03/2026", url:"https://www.brasil247.com/brasil/flavio-bolsonaro-defende-pressao-internacional-sobre-eleicoes-brasileiras-em-evento-conservador-nos-eua/"},
+    {n:20, who:"flavio", tag:"#programassociais",
+     phrase:"Votar para manter os vetos que barraram a ampliação do acesso ao BPC.",
+     idea:"Manter as regras atuais do BPC",
+     fact:"Em 2020, como senador, Flávio votou duas vezes para manter vetos que aumentariam o limite de renda para receber o BPC, benefício de idosos e pessoas com deficiência.",
+     note:"O plano de governo dele promete não tirar ajuda de quem depende do Estado.",
+     src:"ICL Notícias · 07/10/2026", url:"https://iclnoticias.com.br/flavio-bolsonaro-tesouraco-votos-bpc/"},
+    {n:21, who:"flavio", tag:"#segurança",
+     phrase:"Facilitar a posse e o porte de armas para a população.",
+     idea:"Facilitar o acesso a armas",
+     fact:"Flávio já defendeu várias vezes, inclusive no Senado, facilitar a posse e o porte de armas. Em janeiro de 2026, ele compartilhou uma publicação a favor da ideia.",
+     src:"LeiaJá / Estadão · 22/01/2026", url:"https://www.leiaja.com/politica/2026/01/22/flavio-bolsonaro-compartilha-publicacao-favoravel-a-flexibilizacao-da-posse-e-do-porte-de-armas/"},
+    {n:22, who:"flavio", tag:"#direitostrabalhistas",
+     phrase:"Criar contratos mais baratos para jovens de 18 a 24 anos, com salário, férias e 13º pagos por hora trabalhada.",
+     idea:"Contratos mais baratos para jovens",
+     fact:"O plano registrado no TSE prevê reduzir o custo da contratação, com um contrato especial para jovens e pagamento proporcional às horas trabalhadas.",
+     note:"Artigo de opinião de um advogado trabalhista, que critica a proposta.",
+     src:"Outras Palavras · 01/10/2026", url:"https://outraspalavras.net/trabalhoeprecariado/oque-flavio-bolsonaro-propoe-aos-trabalhadores/"},
+    {n:23, who:"flavio", tag:"#direitostrabalhistas",
+     phrase:"Ser contra o fim da escala 6x1 e defender, no lugar, uma jornada flexível com salário proporcional às horas.",
+     idea:"Jornada flexível no lugar do fim da 6x1",
+     fact:"Em outubro de 2026, Flávio disse ter “uma proposta infinitamente melhor” que o fim da 6x1: deixar o trabalhador escolher a carga horária, com o salário acompanhando as horas.",
+     src:"Intercept Brasil · 07/10/2026", url:"https://www.intercept.com.br/2026/10/07/flavio-bolsonaro-enterrar-fim-escala-6x1-regra-abre-brecha-reduzir-salarios/"},
+    {n:24, who:"flavio", tag:"#estadominimo",
+     phrase:"Fazer um “tesouraço”: cortar impostos e fazer um ajuste nos gastos públicos.",
+     idea:"Cortar impostos e gastos com o “tesouraço”",
+     fact:"Em dezembro de 2025, Flávio apresentou a investidores o “tesouraço”: corte de impostos, ajuste fiscal e fim de leis vistas como burocráticas.",
+     src:"CNN Brasil · 17/12/2025", url:"https://www.cnnbrasil.com.br/blogs/gustavo-uribe/politica/flavio-propoe-tesouraco-em-conversa-com-mercado-financeiro/"},
+    {n:25, who:"flavio", tag:"#direitostrabalhistas",
+     phrase:"Lançar um pacote antifraude na Previdência e tirar os sindicatos da gestão do INSS.",
+     idea:"Pacote antifraude na Previdência",
+     fact:"O plano propõe digitalizar a Previdência, uma gestão sem interferência sindical e um pacote antifraude. Flávio não respondeu se manterá as aposentadorias ligadas ao salário mínimo.",
+     src:"g1 · 19/09/2026", url:"https://g1.globo.com/politica/eleicoes/2026/noticia/2026/09/19/salario-minimo-e-aposentadoria-propostas-candidatos-presidente.ghtml"},
+    {n:29, who:"flavio", tag:"#estadominimo",
+     phrase:"Reduzir os ministérios de 38 para 20 a 25 e rever carreiras públicas que a Inteligência Artificial pode substituir.",
+     idea:"Menos ministérios e uso de IA no serviço público",
+     fact:"A coordenadora econômica da campanha, Daniella Marques, disse que um governo Flávio teria entre 20 e 25 ministérios e reavaliaria carreiras tornadas ociosas pela IA.",
+     src:"Veja · 21/08/2026", url:"https://veja.abril.com.br/brasil/daniella-marques-sugere-substituicao-de-carreiras-pelo-uso-de-ia-e-corte-de-ate-18-ministerios/"},
+    {n:30, who:"flavio", tag:"#saúde",
+     phrase:"Colocar no Ministério da Saúde o líder de um instituto que defende mais parcerias com empresas privadas no SUS.",
+     idea:"Mais empresas privadas no SUS",
+     fact:"Flávio disse que seu ministro da Saúde seria Cláudio Lottenberg, que preside um instituto do setor privado favorável a mais parcerias e contratações de empresas no SUS.",
+     note:"Coluna de opinião, crítica ao candidato.",
+     src:"Brasil de Fato · 14/09/2026", url:"https://www.brasildefato.com.br/colunista/o-sus-no-seu-cotidiano/2026/09/14/flavio-bolsonaro-quer-entregar-o-sus-aos-empresarios/"},
+    {n:31, who:"flavio", tag:"#economia",
+     phrase:"Deixar empresa e trabalhador negociarem direto as condições de trabalho, valendo mais que a lei.",
+     idea:"Negociação direta entre patrão e empregado",
+     fact:"O plano de governo amplia a negociação direta e aplica o “negociado sobre o legislado”, mas dentro dos limites da legislação trabalhista, sem acabar com a escala 6x1.",
+     src:"Jornal Via · 14/08/2026", url:"https://jornalvia.com/piracicaba/eleicoes/flavio-bolsonaro-propoe-jornada-de-trabalho-flexivel-e-negociacao-direta-entre-empresas-e-trabalhadores/"}
+  ];
+  // significado em linguagem simples, mostrado antes da resposta (não pode entregar o autor)
+  const MEANING={
+    1:"Hoje o preço dos combustíveis acompanha o dólar e o valor do petróleo lá fora. A ideia é calcular o preço com base nos custos daqui.",
+    3:"Hoje muita gente trabalha 6 dias e folga 1 (escala 6x1). A proposta passa para 5 dias de trabalho e 2 de folga, com o mesmo salário.",
+    7:"Cotas reservam parte das vagas para alunos de escola pública, de baixa renda, negros, indígenas e quilombolas.",
+    8:"Quem tem renda muito alta pagaria mais imposto, para o governo não precisar cortar verba dessas áreas.",
+    10:"São programas que pagam um valor mensal a famílias de baixa renda. O Pé-de-Meia paga estudantes do ensino médio para que não abandonem a escola.",
+    11:"Além de repor a alta dos preços, o salário mínimo ganha um extra ligado ao crescimento da economia.",
+    12:"Cada cidade teria de oferecer vagas na educação infantil também para as crianças que moram no campo.",
+    13:"O Mais Médicos leva médicos a regiões sem atendimento. O Farmácia Popular dá remédios de graça ou mais baratos.",
+    14:"São centros que reúnem polícia, Justiça, apoio psicológico e abrigo para mulheres que sofrem violência.",
+    17:"Defende endurecer o combate ao crime, com o governo federal atuando junto com os estados na segurança.",
+    18:"Terras raras são minerais usados em celulares, carros elétricos e eletrônicos. O Brasil tem grandes reservas, e os EUA buscam alternativas à China.",
+    20:"O BPC paga um salário mínimo por mês a idosos e pessoas com deficiência de baixa renda. A mudança vetada deixaria mais famílias receberem.",
+    21:"Posse é ter arma em casa. Porte é poder andar armado na rua. A ideia é facilitar as duas coisas.",
+    22:"As empresas pagariam menos encargos para contratar jovens, e o pagamento seria calculado pelas horas trabalhadas, não por um salário fixo no mês.",
+    23:"Em vez de garantir 2 folgas por semana a todos, cada trabalhador combinaria as horas com a empresa, e o salário mudaria conforme as horas.",
+    24:"O governo arrecadaria e gastaria menos: cobraria menos impostos e cortaria despesas para equilibrar as contas.",
+    25:"O INSS paga aposentadorias e benefícios. A proposta foca em combater fraudes e mudar quem administra o órgão.",
+    29:"Hoje há 38 ministérios. A ideia é juntar ou extinguir parte deles e cortar funções que a tecnologia já consegue fazer.",
+    30:"Na prática, empresas passariam a administrar ou prestar mais serviços do SUS, pagas pelo governo.",
+    31:"Hoje a lei trabalhista define regras mínimas. Pela ideia, acordos entre patrão e empregado poderiam valer mais que algumas delas, dentro dos limites da lei."
+  };
+  const NAME={lula:"Lula",flavio:"Flávio Bolsonaro"};
+  const $=id=>document.getElementById(id);
+  const WAIT=`<span class="mono">Sem nomes, sem partido</span>
+    <p class="big">Bom ou ruim? Decida.</p>
+    <p>Leia a frase com calma. Não pense em quem disse. Pense só no que ela muda na sua vida.</p>
+    <p style="margin-top:6px">A resposta aparece aqui depois que você responder.</p>`;
+
+  // embaralha a ordem a cada partida
+  for(let k=Q.length-1;k>0;k--){const j=Math.floor(Math.random()*(k+1));[Q[k],Q[j]]=[Q[j],Q[k]]}
+  let i=0; const answers=[];
+
+  function go(id){ document.querySelectorAll('.screen').forEach(s=>s.hidden=s.id!==id); scrollTo(0,0); }
+
+  function show(){
+    const q=Q[i];
+    $('pos').textContent='Pergunta '+(i+1)+'/'+Q.length;
+    $('bar').style.width=(i/Q.length*100)+'%';
+    $('phrase').textContent='“'+q.phrase+'”';
+    $('meaning').textContent=MEANING[q.n];
+    $('tag').textContent=q.tag;
+    $('box').className='box wait'; $('box').innerHTML=WAIT;
+    document.querySelectorAll('#answers .btn').forEach(b=>{b.disabled=false;b.classList.remove('picked')});
+    $('answers').hidden=false; $('next').hidden=true;
+  }
+
+  function answer(v,btn){
+    const q=Q[i]; answers.push({q,v});
+    document.querySelectorAll('#answers .btn').forEach(b=>b.disabled=true);
+    btn.classList.add('picked');
+    // cor do candidato: vermelho para Lula, azul para Flávio
+    $('box').className='box on '+q.who;
+    $('box').innerHTML=`<span class="mono">Quem defende essa ideia é</span>
+      <p class="who">${NAME[q.who]}</p>
+      <p>${q.fact}</p>
+      ${q.note?`<p class="note">${q.note}</p>`:''}
+      <a class="src" href="${q.url}" target="_blank" rel="noopener">Ver fonte: ${q.src} ↗</a>`;
+    $('answers').hidden=true; $('next').hidden=false;
+    $('next').textContent=i===Q.length-1?'Ver meu resultado →':'Próxima →';
+  }
+
+  function result(){
+    const good=w=>answers.filter(a=>a.q.who===w&&a.v==='bom').length;
+    const L=good('lula'), F=good('flavio'), T=Q.length/2;
+    const w=$('winner');
+    if(L>F){w.textContent='Lula';w.className='lula'}
+    else if(F>L){w.textContent='Flávio Bolsonaro';w.className='flavio'}
+    else {w.textContent='Empate';w.className='';$('wlabel').textContent='Suas respostas deram'}
+    $('lead').textContent='Sem saber quem disse, você achou boas '+L+' de '+T+' ideias do Lula e '+F+' de '+T+' ideias do Flávio Bolsonaro.';
+    $('nl').textContent=L+'/'+T; $('nf').textContent=F+'/'+T;
+    $('tl').style.width=L/T*100+'%'; $('tf').style.width=F/T*100+'%';
+    const liked=answers.filter(a=>a.v==='bom');
+    $('ideas').innerHTML=liked.length?liked.map(a=>`<li class="${a.q.who}">${a.q.idea}</li>`).join(''):'<li>Você não marcou nenhuma ideia como boa.</li>';
+    go('s-result');
+  }
+
+  $('start').onclick=()=>{go('s-quiz');show()};
+  document.querySelectorAll('#answers .btn').forEach(b=>b.onclick=()=>answer(b.dataset.v,b));
+  $('next').onclick=()=>{ if(i<Q.length-1){i++;show();scrollTo(0,0)} else result(); };
+</script>
+</body>
+</html>
