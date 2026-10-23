@@ -54,6 +54,9 @@
   .box .who{font-family:var(--head);font-weight:400;font-size:42px;line-height:.95;margin:8px 0 12px;text-transform:uppercase}
   .src{display:inline-flex;gap:6px;margin-top:8px;color:var(--ink);font-weight:600;font-size:14px}
   .note{font-size:13px!important;color:var(--muted)!important;margin-top:10px!important}
+  .crit{margin-top:16px;padding-top:14px;border-top:1px solid rgba(0,0,0,.15)}
+  .crit .mono{font-size:9.5px}
+  .crit p{margin:6px 0 0!important;font-size:14px!important}
   @keyframes in{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
 
   .answers{display:grid;grid-template-columns:1fr 1fr;gap:10px}
@@ -226,14 +229,16 @@
      fact:"Em dezembro de 2025, Flávio apresentou a investidores o “tesouraço”: corte de impostos, ajuste fiscal e fim de leis vistas como burocráticas.",
      src:"CNN Brasil · 17/12/2025", url:"https://www.cnnbrasil.com.br/blogs/gustavo-uribe/politica/flavio-propoe-tesouraco-em-conversa-com-mercado-financeiro/"},
     {n:25, who:"flavio", tag:"#direitostrabalhistas",
-     phrase:"Lançar um pacote antifraude na Previdência e tirar os sindicatos da gestão do INSS.",
-     idea:"Pacote antifraude na Previdência",
-     fact:"O plano propõe digitalizar a Previdência, uma gestão sem interferência sindical e um pacote antifraude. Flávio não respondeu se manterá as aposentadorias ligadas ao salário mínimo.",
-     src:"g1 · 19/09/2026", url:"https://g1.globo.com/politica/eleicoes/2026/noticia/2026/09/19/salario-minimo-e-aposentadoria-propostas-candidatos-presidente.ghtml"},
+     phrase:"Criar regras de contratação diferentes para pessoas com 50 anos ou mais que estão desempregadas há um ano.",
+     idea:"Contratação especial para quem tem 50 anos ou mais",
+     fact:"O plano de governo prevê “condições diferenciadas” para incentivar a contratação de pessoas com 50 anos ou mais desempregadas há 12 meses, além de um contrato mais barato para jovens.",
+     note:"O plano não detalha quais regras ou direitos mudariam.",
+     src:"Jornal Via · 14/08/2026", url:"https://jornalvia.com/piracicaba/eleicoes/flavio-bolsonaro-propoe-jornada-de-trabalho-flexivel-e-negociacao-direta-entre-empresas-e-trabalhadores/"},
     {n:29, who:"flavio", tag:"#estadominimo",
      phrase:"Reduzir os ministérios de 38 para 20 a 25 e rever carreiras públicas que a Inteligência Artificial pode substituir.",
      idea:"Menos ministérios e uso de IA no serviço público",
      fact:"A coordenadora econômica da campanha, Daniella Marques, disse que um governo Flávio teria entre 20 e 25 ministérios e reavaliaria carreiras tornadas ociosas pela IA.",
+     note:"A campanha diz que falas informais da equipe não são necessariamente compromissos. O plano oficial fala em cortar pelo menos 10 ministérios.",
      src:"Veja · 21/08/2026", url:"https://veja.abril.com.br/brasil/daniella-marques-sugere-substituicao-de-carreiras-pelo-uso-de-ia-e-corte-de-ate-18-ministerios/"},
     {n:30, who:"flavio", tag:"#saúde",
      phrase:"Colocar no Ministério da Saúde o líder de um instituto que defende mais parcerias com empresas privadas no SUS.",
@@ -265,10 +270,33 @@
     22:"As empresas pagariam menos encargos para contratar jovens, e o pagamento seria calculado pelas horas trabalhadas, não por um salário fixo no mês.",
     23:"Em vez de garantir 2 folgas por semana a todos, cada trabalhador combinaria as horas com a empresa, e o salário mudaria conforme as horas.",
     24:"O governo arrecadaria e gastaria menos: cobraria menos impostos e cortaria despesas para equilibrar as contas.",
-    25:"O INSS paga aposentadorias e benefícios. A proposta foca em combater fraudes e mudar quem administra o órgão.",
+    25:"As empresas teriam regras próprias para contratar quem tem 50 anos ou mais e está sem emprego há um ano, como forma de incentivo.",
     29:"Hoje há 38 ministérios. A ideia é juntar ou extinguir parte deles e cortar funções que a tecnologia já consegue fazer.",
     30:"Na prática, empresas passariam a administrar ou prestar mais serviços do SUS, pagas pelo governo.",
     31:"Hoje a lei trabalhista define regras mínimas. Pela ideia, acordos entre patrão e empregado poderiam valer mais que algumas delas, dentro dos limites da lei."
+  };
+  // críticas com fonte, mostradas só na revelação
+  const CRIT={
+    18:{text:"O Brasil 247 descreveu a fala como oferecer “de bandeja” aos EUA as terras raras brasileiras, um recurso considerado estratégico.",
+        src:"Brasil 247 · 28/03/2026", url:"https://www.brasil247.com/brasil/flavio-bolsonaro-defende-pressao-internacional-sobre-eleicoes-brasileiras-em-evento-conservador-nos-eua/"},
+    20:{text:"Com os vetos mantidos, o limite de renda do BPC não foi ampliado, e famílias pobres que seriam incluídas no benefício ficaram de fora.",
+        src:"ICL Notícias · 07/10/2026", url:"https://iclnoticias.com.br/flavio-bolsonaro-tesouraco-votos-bpc/"},
+    21:{text:"Para Daniel Cerqueira, pesquisador do Ipea, facilitar o acesso a armas a partir de 2019 “resultou em muitas mortes violentas”. Em 2022, 72% dos homicídios no país foram com arma de fogo.",
+        src:"Correio Braziliense · 04/03/2025", url:"https://www.correiobraziliense.com.br/brasil/2025/03/7075811-homicidios-a-vida-banalizada-pela-arma-de-fogo.html"},
+    22:{text:"Para o advogado trabalhista que assina o texto, a proposta acaba com o salário mensal como referência e abre caminho para contratos de “zero hora” e para a precarização.",
+        src:"Outras Palavras · 01/10/2026", url:"https://outraspalavras.net/trabalhoeprecariado/oque-flavio-bolsonaro-propoe-aos-trabalhadores/"},
+    23:{text:"Especialistas ouvidos pelo Intercept dizem que a jornada flexível passa o risco do negócio para o trabalhador e abre brecha para patrões pressionarem por menos horas e menos salário.",
+        src:"Intercept Brasil · 07/10/2026", url:"https://www.intercept.com.br/2026/10/07/flavio-bolsonaro-enterrar-fim-escala-6x1-regra-abre-brecha-reduzir-salarios/"},
+    24:{text:"Segundo o ICL Notícias, o plano prevê um ajuste de R$ 200 bilhões sem detalhar de onde sairiam todos os cortes.",
+        src:"ICL Notícias · 07/10/2026", url:"https://iclnoticias.com.br/flavio-bolsonaro-tesouraco-votos-bpc/"},
+    25:{text:"O Intercept afirma que o plano prevê um modelo de contratação com menos direitos para jovens e para pessoas com mais de 50 anos.",
+        src:"Intercept Brasil · 07/10/2026", url:"https://www.intercept.com.br/2026/10/07/flavio-bolsonaro-enterrar-fim-escala-6x1-regra-abre-brecha-reduzir-salarios/"},
+    29:{text:"O plano não diz quais carreiras seriam cortadas nem traz calendário de concursos ou número de vagas para servidores.",
+        src:"ISTOÉ · 12/10/2026", url:"https://istoe.com.br/lula-flavio-bolsonaro-concursos-publicos-servidores"},
+    30:{text:"O colunista avalia que a escolha de Lottenberg indica um “programa de mercado contra o SUS”, que priorizaria os ganhos do setor privado.",
+        src:"Brasil de Fato · 14/09/2026", url:"https://www.brasildefato.com.br/colunista/o-sus-no-seu-cotidiano/2026/09/14/flavio-bolsonaro-quer-entregar-o-sus-aos-empresarios/"},
+    31:{text:"Advogados ouvidos pelo Intercept dizem que não existe negociação “de igual para igual” entre a empresa e alguém que depende do emprego.",
+        src:"Intercept Brasil · 07/10/2026", url:"https://www.intercept.com.br/2026/10/07/flavio-bolsonaro-enterrar-fim-escala-6x1-regra-abre-brecha-reduzir-salarios/"}
   };
   const NAME={lula:"Lula",flavio:"Flávio Bolsonaro"};
   const $=id=>document.getElementById(id);
@@ -305,7 +333,10 @@
       <p class="who">${NAME[q.who]}</p>
       <p>${q.fact}</p>
       ${q.note?`<p class="note">${q.note}</p>`:''}
-      <a class="src" href="${q.url}" target="_blank" rel="noopener">Ver fonte: ${q.src} ↗</a>`;
+      <a class="src" href="${q.url}" target="_blank" rel="noopener">Ver fonte: ${q.src} ↗</a>
+      ${CRIT[q.n]?`<div class="crit"><span class="mono">O que dizem os críticos</span>
+        <p>${CRIT[q.n].text}</p>
+        <a class="src" href="${CRIT[q.n].url}" target="_blank" rel="noopener">Ver crítica: ${CRIT[q.n].src} ↗</a></div>`:''}`;
     $('answers').hidden=true; $('next').hidden=false;
     $('next').textContent=i===Q.length-1?'Ver meu resultado →':'Próxima →';
   }
